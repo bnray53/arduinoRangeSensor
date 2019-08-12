@@ -32,13 +32,13 @@
     <body>
 			<h4>Description</h4>
 			
-				<p>&emsp;This is a brief summary of a project undertaken during the Summer of 2019. The goal of the project was to build a time of flight sensor for a BMX bicycle. This project also gave me an excuse to use the Arduino platform for the first time and to further my knowledge of the C type programming language used on the Arduino platform.</p>
+				<p>&emsp;This is a brief summary of a project undertaken during the Summer of 2019. The goal of the project was to build a time of flight sensor for a BMX bicycle. This project also gave me an excuse to use the Arduino platform for the first time and to further my knowledge of the C programming language which is used on the Arduino platform.</p>
 			
 			<h4>Origin and Design</h4>
 			
-				<p>&emsp;The idea for this project came about after a discussion with a BMX enthusiast I worked with over the Summer when he jokingly asked me to put a “jump meter” on his bike. After doing some initial research it came to my attention that there was no currently offered product that was a solution to this problem. So, with this lack of current options I set out to build some type of "jump sensor" that could be useful to BMX riders. My goal for the Summer was to build one type of sensor or way of gathering data that could later be built upon or combined with other sensors to form this telemetry package.</p>
+				<p>&emsp;The idea for this project came about after a discussion with a BMX enthusiast I worked with over the Summer when he jokingly asked me to put a “jump meter” on his bike. After doing some initial research it came to my attention that there was no currently offered product that was a solution to this problem. So, with this lack of current options I set out to build some type of "jump sensor" that could be useful to BMX riders. My goal for the Summer was to build one type of sensor or way of gathering data that could later be built upon in the future.</p>
 				
-				<p>&emsp;My first thought was to measure the maximum height obtained during a jump preformed by a BMX bike, however this was a difficult prospect that will have to be explored at a later time. My next thought was to measure time of flight of the bicycle. This measurement could be used by the rider to assist with training and practice as well as be a fun way to challenge fellow riders to outperform the current highest time of flight reading.</p>
+				<p>&emsp;My first thought was to measure the maximum height obtained during a jump preformed by a BMX bike, however this was a difficult prospect that will have to be explored at a later time. My next thought was to measure the time of flight of the bicycle during a jump. This measurement could be used by the rider to assist with training and practice as well as be a fun way to challenge fellow riders to outperform the current highest time of flight reading.</p>
 				
 				<p>&emsp;Multiple methods to perform this time of flight calculation were considered ranging from reading tire pressure differential via wireless tire pressure sensors to using some kind of squat switch system similar to the type I had seen used in aviation landing gear systems. The method I finally decided upon was to use an ultrasonic range sensor that would trigger a timer when the bicycle was airborne.</p>
 				
@@ -86,15 +86,18 @@
 						
 					<h5>Prototype 3</h5>
 					
-						<p>&emsp;The third prototype of the sensor was built to simplify the unneeded mount and pivot system of the second prototype. A new mount would be made using another plastic enclosure that was cut at an angle that would complement the angle of the down-tube of the bicycle in order to have the ultrasonic sensor point straight down at 90 degrees. The angle of the down-tube of the bicycle was measured using a homemade inclinometer at 33 degrees. </p>
+						<p>&emsp;The third prototype of the sensor was built to simplify the unneeded mount and pivot system of the second prototype. A new mount was made using another plastic enclosure that was cut at an angle that would complement the angle of the down-tube of the bicycle in order to have the ultrasonic sensor point straight down at 90 degrees. The angle of the down-tube of the bicycle was measured using a homemade inclinometer at 33 degrees. </p>
 						
 						
-						<p>&emsp;With this angle measurement the plastic enclosure was cut, and the ultrasonic sensor installed. (See picture below for reference)</p>
+						<p>&emsp;With this angle measurement, the plastic enclosure was cut, and the ultrasonic sensor installed. (See picture below for reference)</p>
 						
 						<!--Picture-->
-						<img src="pic4.jpg" style="padding-left: 15px;" alt="prototype 3" width="500" height="330">
+						<img src="pic4.jpg" style="padding-left: 5px;" alt="prototype 3" width="500" height="330">
 						
-						<p>&emsp;This third prototype was given to the rider to test extensively for a two-week period. Once this period is complete the results of the test will be posted here.</p>
+						<p>&emsp;This third prototype was then installed on the bicycle for testing. (See picture below for reference) The sensor preformed well, with no adverse effects noted during the test run. The sensor's 15 degree effectual angle was enough to prevent the premature triggering of the sensor during normal riding conditions. The sensor and display were also robust enought to handle the highest jump the rider could manage at our test location.</p>
+						
+						<!--Picture-->
+						<img src="pic5.jpg" style="transform:rotate(90deg); padding-top: 170px;" alt="prototype 1" width="515" height="333">
 						
 				</div>
 			
@@ -102,7 +105,7 @@
 			
 				<p>&emsp;The code used across all three prototypes was the same, the only change being made in these different versions was the hardware. Because of this I kept this section separate so as not to repeat the same information.</p>
 				
-				<p>&emsp;The code written for this project is relatively simple to understand. The program has two loops, one in the setup function and one in the main function. The loop in the setup function sends a ping out of the ultrasonic sensor. If the distance of this ping is within 4 ft the distance, plus a 3 inch buffer, is recorded as the distance to the ground. If the distance is over 4 ft the loop repeats. A red indicator light and screen prompt lets the rider know the distance is not set yet, and a blinking green indicator light and screen prompt lets the rider know the distance was set successfully.</p>
+				<p>&emsp;The code written for this project is relatively simple to understand. The program has two loops, one in the setup function and one in the main function. The loop in the setup function sends a ping out of the ultrasonic sensor. If the distance of this ping is within 4 ft; the distance, plus a 3 inch buffer, is recorded as the distance to the ground. If the distance is over 4 ft the loop repeats. A red indicator light and screen prompt lets the rider know the distance is not set yet, and a blinking green indicator light and screen prompt lets the rider know the distance was set successfully.</p>
 				
 				<p>&emsp;Once the setup function is exited the main function takes over. This main function loops over and over constantly sending a ping out of the ultrasonic sensor and determining if the distance to the ground has increased. If it has,  a green indicator light turns on and a timer starts and runs until this distance returns to its original length, when this happens the time of flight is displayed until the next jump and a red indicator light turns on. If the distance has not increased the function simply loops and check again.</p>
 				
